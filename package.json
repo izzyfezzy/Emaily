@@ -9,16 +9,24 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
+    "webhook": "lt -p 5001 -s agbalaba"
   },
   "author": "Izzyfezzy",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.4",
+    "localtunnel": "^1.9.1",
     "mongoose": "^5.3.7",
     "nodemon": "^1.18.5",
     "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0"
+    "passport-google-oauth20": "^1.0.0",
+    "sendgrid": "^5.2.3",
+    "stripe": "^6.13.0"
   }
 }
